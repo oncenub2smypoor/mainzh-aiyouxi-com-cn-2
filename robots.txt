@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oncenub2smypoor.github.io/mainzh-aiyouxi-com-cn-2/sitemap.xml
