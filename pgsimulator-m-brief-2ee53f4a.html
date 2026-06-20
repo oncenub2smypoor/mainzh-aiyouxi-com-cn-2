@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>PG模拟器 · 站点介绍与使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1b2b36;
+            line-height: 1.6;
+            padding: 0 1.2rem;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0 3.5rem;
+        }
+
+        /* 蓝绿色点缀体系 */
+        .accent-border {
+            border-left: 5px solid #1d8f8a;
+            padding-left: 1rem;
+        }
+
+        .badge {
+            background: #e0f2ef;
+            color: #0c5f5a;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .grid-card {
+            background: white;
+            border-radius: 18px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 8px 24px rgba(22, 67, 68, 0.04), 0 2px 6px rgba(22, 67, 68, 0.03);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            border: 1px solid #dcebe9;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(22, 90, 85, 0.07);
+            border-color: #b0d6d1;
+        }
+
+        /* hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            font-weight: 620;
+            color: #0b3e3b;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subhead {
+            font-size: 1.05rem;
+            color: #2c5652;
+            max-width: 70%;
+        }
+
+        @media (max-width: 580px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero .subhead {
+                max-width: 100%;
+            }
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        /* 摘要区 */
+        .summary-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin-bottom: 2.6rem;
+            background: #eaf6f4;
+            border-radius: 26px;
+            padding: 1.6rem 1.8rem;
+            align-items: center;
+        }
+
+        .summary-text {
+            flex: 2;
+            min-width: 220px;
+        }
+
+        .summary-text p {
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-visual {
+            flex: 1;
+            min-width: 140px;
+            background: #d5ede9;
+            height: 6px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .summary-visual::after {
+            content: "⚙ 模拟 · 校验 · 反馈";
+            position: absolute;
+            right: 0;
+            top: -1.4rem;
+            font-size: 0.9rem;
+            color: #16635d;
+            font-weight: 450;
+            white-space: nowrap;
+        }
+
+        /* 网格卡片 —— 四个特点 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .features-grid .grid-card h3 {
+            font-size: 1.1rem;
+            font-weight: 580;
+            color: #0e4e49;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .features-grid .grid-card h3 span {
+            background: #1d8f8a;
+            border-radius: 30px;
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .features-grid .grid-card p {
+            font-size: 0.95rem;
+            color: #2b4d49;
+        }
+
+        /* 场景 + 使用建议区域 (两列) */
+        .scenario-suggestion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+            margin-bottom: 2.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .scenario-suggestion {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scenario-card {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 20px;
+            padding: 1.5rem 1.4rem;
+            border: 1px solid #cce3df;
+        }
+
+        .scenario-card h4 {
+            font-size: 1rem;
+            font-weight: 560;
+            color: #0f5b55;
+            margin-bottom: 0.7rem;
+            border-bottom: 2px solid #b7d8d3;
+            padding-bottom: 0.35rem;
+        }
+
+        .scenario-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scenario-card li {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 0.55rem;
+            font-size: 0.94rem;
+            color: #1e3f3b;
+        }
+
+        .scenario-card li::before {
+            content: "▹";
+            color: #1a8f86;
+            font-weight: 600;
+        }
+
+        /* 提示框 / 可信说明  */
+        .trust-note {
+            background: #f1f8f7;
+            border-radius: 28px;
+            padding: 1.4rem 1.8rem;
+            margin-bottom: 2.4rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 1rem 2rem;
+            border: 1px solid #bedbd6;
+        }
+
+        .trust-note .note-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .trust-note .note-text {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .trust-note .note-text p {
+            font-size: 0.96rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .trust-note .note-text p strong {
+            color: #13645e;
+        }
+
+        /* FAQ 摘要（极简） */
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .faq-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            background: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #d1e3df;
+        }
+
+        .faq-item .q {
+            font-weight: 550;
+            color: #0d5751;
+            min-width: 75px;
+            font-size: 0.9rem;
+        }
+
+        .faq-item .a {
+            color: #1e413d;
+            font-size: 0.92rem;
+        }
+
+        /* 链接样式 + 主要a */
+        a {
+            color: #1a7b74;
+            text-decoration: none;
+            border-bottom: 1px dashed #7ebbb4;
+            transition: border-color 0.1s, color 0.1s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #0e4f4a;
+            border-bottom-style: solid;
+            border-color: #0e4f4a;
+        }
+
+        .main-link-highlight {
+            background: #d5efe9;
+            padding: 0.1rem 0.4rem;
+            border-radius: 12px;
+            border-bottom: 1px solid #1d8f8a;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 2.2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #40716b;
+            border-top: 1px solid #cde0dc;
+            padding-top: 1.8rem;
+        }
+
+        .footer-note small {
+            opacity: 0.7;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 420px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-item {
+                flex-wrap: wrap;
+                gap: 0.2rem 0.8rem;
+                padding: 0.8rem 1rem;
+            }
+            .faq-item .q {
+                min-width: auto;
+            }
+            .summary-visual::after {
+                white-space: normal;
+                position: static;
+                display: block;
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero 区域 -->
+    <header class="hero">
+        <h1>PG模拟器 · 站点与工具简述</h1>
+        <div class="subhead accent-border">
+            面向部署验证与性能评估的轻量模拟环境，聚焦 PostgreSQL 生态的行为镜像。
+        </div>
+        <div class="hero-meta">
+            <span class="badge">📋 版本迭代 · 社区驱动</span>
+            <span class="badge">🧪 测试友好</span>
+        </div>
+    </header>
+
+    <!-- 摘要 -->
+    <div class="summary-block">
+        <div class="summary-text">
+            <p><strong>PG模拟器</strong> 提供了一个可重复、低成本的沙盒：模拟查询计划、锁等待、事务冲突等典型场景，帮助开发与运维人员在非生产环境中验证配置或应用行为。无需搭建完整副本，即可获得近似真实的反馈。</p>
+            <p style="margin-top: 0.3rem; font-size: 0.9rem; color: #2d655f;">基于 SQL 解析与启发式规则，不直接操作真实数据库实例。</p>
+        </div>
+        <div class="summary-visual"></div>
+    </div>
+
+    <!-- 特点网格 (4卡片) -->
+    <div class="features-grid">
+        <div class="grid-card">
+            <h3><span></span> 场景覆盖</h3>
+            <p>索引扫描、嵌套循环、聚合下推等十余类执行计划模拟，支持自定义参数倾斜。</p>
+        </div>
+        <div class="grid-card">
+            <h3><span></span> 轻量反馈</h3>
+            <p>毫秒级响应，输出执行耗时估算、锁等级与冲突概率，辅助判断瓶颈。</p>
+        </div>
+        <div class="grid-card">
+            <h3><span></span> 无侵入</h3>
+            <p>无需安装插件或代理，浏览器端完成计算；数据脱敏，不留存查询语句。</p>
+        </div>
+        <div class="grid-card">
+            <h3><span></span> 可复现</h3>
+            <p>相同的模拟种子（环境参数）可输出一致结果，便于团队协作比对。</p>
+        </div>
+    </div>
+
+    <!-- 使用场景 + 建议 (两列) -->
+    <div class="scenario-suggestion">
+        <div class="scenario-card">
+            <h4>📌 典型使用场景</h4>
+            <ul>
+                <li>对比不同索引策略下的预估代价</li>
+                <li>验证连接池与负载配置的极限倾向</li>
+                <li>学习 PostgreSQL 执行计划解读</li>
+                <li>快速排查锁等待的模拟复现</li>
+            </ul>
+        </div>
+        <div class="scenario-card">
+            <h4>⚡ 使用建议</h4>
+            <ul>
+                <li>结合真实 EXPLAIN ANALYZE 交叉验证</li>
+                <li>将模拟结果作为参考基线而非绝对指标</li>
+                <li>关注相对趋势而非单个数字精度</li>
+                <li>多轮调整参数观察输出变化</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 可信说明 + 主要链接 自然嵌入 -->
+    <div class="trust-note">
+        <div class="note-icon">🧊</div>
+        <div class="note-text">
+            <p><strong>可信但克制</strong> —— <a href="https://pgsimulator-m.com">PG模拟器</a> 基于公开的 PostgreSQL 代价模型与统计信息模拟，不连接任何真实数据库，计算均在本地完成。页面不含追踪器，不收集个人标识数据。所有模拟结果仅供学习与预研参考，不应替代生产环境中的全面测试。</p>
+            <p style="margin-top: 0.3rem;">本站由独立开发者维护，持续根据社区反馈调整模拟内核。如发现偏差，欢迎通过仓库议题提供示例。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（三个问题）-->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <span class="q">模拟是否准确？</span>
+            <span class="a">近似程度取决于参数设定与版本差异；推荐先用默认配置体验趋势。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">需要注册吗？</span>
+            <span class="a">无需任何账号，打开 <a href="https://pgsimulator-m.com">PG模拟器</a> 即可使用。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">支持哪些PG版本？</span>
+            <span class="a">主要参考 14~16 代价常量，同时提供自定义系数覆盖。</span>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <small>提供信息参考 · 不构成生产承诺 · 版本 0.9.4 · 仅展示站点介绍</small>
+        <br>
+        <span style="opacity: 0.5; font-size: 0.75rem;">— 理性模拟，谨慎推导 —</span>
+    </div>
+
+</div>
+</body>
+</html>
