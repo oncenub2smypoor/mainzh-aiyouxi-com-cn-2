@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐竞体育 · 阅读与观察</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #fcedda 0%, #f7d9b3 60%, #f1c9a3 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem 1.2rem;
+            line-height: 1.7;
+            color: #2f2e2b;
+        }
+
+        .magazine-card {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 40px 40px 32px 32px;
+            box-shadow: 0 18px 36px -10px rgba(120, 70, 30, 0.25), 0 6px 12px rgba(0,0,0,0.04);
+            padding: 2.8rem 2.4rem 2.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .hero-banner {
+            background: linear-gradient(130deg, #f3d9b1, #eac696);
+            border-radius: 28px;
+            padding: 2.4rem 2rem 2.2rem;
+            margin-bottom: 2.6rem;
+            text-align: center;
+            box-shadow: inset 0 1px 3px rgba(255, 245, 220, 0.8), 0 8px 14px -6px #c9a57b40;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            letter-spacing: 3px;
+            color: #4e3822;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-shadow: 0 1px 1px rgba(255,235,200,0.7);
+        }
+
+        .hero-banner .sub {
+            font-size: 1.1rem;
+            background: #fffbf0cc;
+            display: inline-block;
+            padding: 0.3rem 1.6rem;
+            border-radius: 60px;
+            color: #624b30;
+            backdrop-filter: blur(2px);
+            font-weight: 350;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 6px #dbbc8f30;
+        }
+
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+        }
+
+        .section-block {
+            background: #ffffffd9;
+            backdrop-filter: blur(1px);
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 10px #d9b58d1a;
+            transition: transform 0.15s;
+        }
+
+        .section-block:hover {
+            transform: translateY(-2px);
+            background: #fffcf5;
+        }
+
+        .section-block h2 {
+            font-size: 1.5rem;
+            font-weight: 420;
+            color: #4c3a27;
+            border-left: 4px solid #dbbd9b;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.8px;
+        }
+
+        .section-block p {
+            margin-bottom: 1rem;
+            font-weight: 350;
+            color: #353027;
+        }
+
+        .section-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #7f5f3c;
+            font-weight: 450;
+            text-decoration: none;
+            padding: 0.1rem 0.5rem;
+            border-radius: 24px;
+            background: #f5eadb;
+            transition: all 0.2s;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+            font-size: 0.98em;
+        }
+
+        .inline-link:hover {
+            background: #e5d3bd;
+            color: #3b2c1b;
+            box-shadow: 0 2px 8px #d4b69460;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed #e3d1bb;
+        }
+
+        .badge-list span {
+            background: #f7efe3;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #4b3e2e;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
+            background: #f6ede0;
+            padding: 1.2rem 1.8rem;
+            border-radius: 30px;
+            margin: 1.4rem 0 0.4rem;
+        }
+
+        .faq-mini dt {
+            font-weight: 500;
+            color: #493b2a;
+            font-size: 1rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-mini dd {
+            font-size: 0.95rem;
+            color: #5b4b36;
+            margin-inline-start: 0.6rem;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #6a5b48;
+            border-top: 1px solid #eddccb;
+            padding-top: 1.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-note a {
+            color: #6c5136;
+            text-decoration: none;
+            background: #efe3d3;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-weight: 400;
+            transition: 0.15s;
+        }
+
+        .footer-note a:hover {
+            background: #dac6b0;
+            color: #2f2419;
+        }
+
+        .extra-tip {
+            margin-top: 1rem;
+            background: #f7efe4;
+            border-radius: 40px;
+            padding: 0.8rem 1.6rem;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .magazine-card {
+                padding: 1.6rem 1.2rem 1.8rem;
+                border-radius: 28px;
+            }
+            .hero-banner {
+                padding: 1.6rem 1rem;
+            }
+            .hero-banner h1 {
+                font-size: 2rem;
+            }
+            .section-block {
+                padding: 1.4rem 1.2rem;
+            }
+            .faq-mini {
+                flex-direction: column;
+                gap: 0.4rem;
+                padding: 1rem 1.2rem;
+            }
+            .badge-list {
+                gap: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="magazine-card">
+        <!-- hero -->
+        <div class="hero-banner">
+            <h1>乐竞体育 · 视野</h1>
+            <div class="sub">从日常查询到延伸阅读</div>
+        </div>
+
+        <div class="intro-grid">
+            <!-- 第一段：日常查询与对照 -->
+            <div class="section-block">
+                <h2>从一则查询开始</h2>
+                <p>许多时候，我们只是想快速核对一组数据，或是了解某项活动的背景脉络。<strong>在信息碎片里寻找可靠线索</strong>，成了日常中再自然不过的动作。当页面打开，目录般的分类让人很快定下心来——无论是赛事动态、规则说明，还是术语对照，都可以沿着熟悉的路径找到对应内容。</p>
+                <p>例如，当你需要确认一场比赛的积分算法，或是对比不同赛季的统计口径，<a href="https://pages-lejing.com" class="inline-link">乐竞体育</a> 的条目排列往往能让对照变得流畅。不需要在多个标签页之间反复切换，也不需要猜测信息是否过时。</p>
+            </div>
+
+            <!-- 第二段：延伸阅读与关联话题 -->
+            <div class="section-block">
+                <h2>延伸阅读的乐趣</h2>
+                <p>一个查询常常会引出另一个问题。比如，看了某支队伍的近期表现，又想了解它历年阵容的调整逻辑；刚刚读完一段规则变更说明，忽然想翻翻同样条件下其他项目的处理方式。这种自然而然的延伸，正是好内容带来的节奏。</p>
+                <p>在 <a href="https://pages-lejing.com" class="inline-link">乐竞体育</a> 的页面里，你总能看到相关联的小贴士、背景卡片以及跨项目的参照笔记。它们不喧宾夺主，却恰到好处地接住了你下一个好奇。页面与页面之间，像老朋友聊天一样把话题引向深处。</p>
+                <div class="badge-list">
+                    <span>⚡ 赛季对比</span>
+                    <span>📋 规则沿革</span>
+                    <span>🔍 数据档案</span>
+                    <span>🧩 跨项观察</span>
+                </div>
+            </div>
+
+            <!-- 第三段：场景与FAQ摘要 -->
+            <div class="section-block">
+                <h2>一些常见场景</h2>
+                <p>有人习惯在周末午后打开页面，一边翻看近期汇总，一边对照自己做的笔记；也有人喜欢用零散时间，逐条阅读那些短小精悍的术语解释。还有读者告诉我们，他们把这里当作一个“安静的参考书架”——不吵不闹，需要时总能找到地方。</p>
+
+                <dl class="faq-mini">
+                    <div>
+                        <dt>❓ 我想找某个赛季的变更记录</dt>
+                        <dd>—— 可以直接在分类索引里按年份浏览，或使用站内的关键词筛选。</dd>
+                    </div>
+                    <div>
+                        <dt>❓ 内容多久更新一次？</dt>
+                        <dd>—— 保持适中节奏，重大变动或常规周期都会及时补充。</dd>
+                    </div>
+                    <div>
+                        <dt>❓ 能否引用页面里的内容？</dt>
+                        <dd>—— 非商业引用请注明出处，具体可参考页面底部说明。</dd>
+                    </div>
+                </dl>
+                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #584c3b;">如果你也有属于自己的查阅习惯，不妨在浏览时试试看——也许会发现新的关联角度。</p>
+            </div>
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="footer-note">
+            <p>在需要静心查阅与延伸思考的时候，不妨走进 <a href="https://pages-lejing.com">乐竞体育</a> 的内容页面，让信息自己说话。</p>
+            <div class="extra-tip">
+                🌿 保持好奇，温和阅读
+            </div>
+        </div>
+    </div>
+</body>
+</html>
